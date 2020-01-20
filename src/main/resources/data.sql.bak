@@ -1,0 +1,49 @@
+--DROP TABLE IF EXISTS villain;
+--
+--CREATE TABLE villain (
+--  id LONG AUTO_INCREMENT  PRIMARY KEY,
+--  moniker VARCHAR(250) NOT NULL,
+--  motto VARCHAR(250) NOT NULL
+--);
+
+--INSERT INTO villain (first_name, last_name, hit_points, moniker, motto) VALUES
+--  ('Luke', 'Skywalker', 100, 'whiney-McWhiner', 'But I was going into Tosche Station to pick up some power converters!'),
+--  ('Dru', 'Zod', 10000, 'General Zod', 'Kneel before Zod!'),
+--  ('Uxas', 'Khan', 15000, 'Darkseid', 'Apokolips demands your service!');
+
+
+
+
+--INSERT INTO HERO (first_name, last_name, hit_points, alias, catch_phrase, side_kick, organization, mask) VALUES
+--                     ('Anakin', 'Skywalker', 2000, 'Darth Vader', 'I find your lack of faith disturbing', false, 'Galactic Empire', true),
+--                     ('N/A', 'N/A', 10000, 'Thanos', 'Let there be balance', false, 'Intergalactic Balance, LLC', false),
+--                     ('Bruce', 'Wayne', 400, 'The Batman', 'Im Batman', true, 'none', true);
+
+--INSERT INTO ITEM (name) VALUES ('wrench');
+
+--INSERT INTO LIGHT_SABER (color, style, damage) VALUES
+--  ('red', 'single-blade', 100),
+--  ('blue', 'double-bladed', 150),
+--  ('green', 'cross-guard', 125);
+
+--  INSERT INTO ITEM (color, style, damage, dtype, id, size, weakness, rechargeable) VALUES
+--    ('red', 'single-blade', 100, 'LightSaber', 1, 'MED', 'none', true),
+--    ('blue', 'double-bladed', 150, 'LightSaber', 2, 'MED', 'none', true),
+--    ('green', 'cross-guard', 125, 'LightSaber', 3, 'MED', 'none', true),
+--    (null, null, 125, 'POWERRING', 4, 'SM', 'yellow', true);
+
+--  INSERT INTO VEHICLE(vehicle_id, number_of_pilots, top_speed) VALUES (1, 2, 400000);
+
+
+--INSERT INTO TIE_FIGHTER ( vehicle_id, blaster_damage, style, escape_pod) VALUES
+--(1, 1000, 'tie', false),
+--(1, 2000, 'bomber', true),
+--(1, 3000, 'interceptor', true);
+
+
+--INSERT INTO TARDIS (id, color, police_box) VALUES
+--(1, 'green', false),
+--(2, 'yellow', true),
+--(3, 'blue', true);
+
+--INSERT INTO CREATURE (hit_points, alignment) VALUES (12, 'EVIL');
