@@ -21,6 +21,7 @@ import com.krd.jpa.inheritance.repository.singletable.LightSaberRepository;
 import com.krd.jpa.inheritance.repository.tableperclass.CreatureRepository;
 import com.krd.jpa.inheritance.repository.tableperclass.OrcRepository;
 import com.krd.jpa.inheritance.repository.tableperclass.UrukaiRepository;
+import lombok.AllArgsConstructor;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -28,54 +29,41 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class DataLoader implements ApplicationRunner {
 
-
-    @Autowired
     private VillainRepository villainRepository;
 
-    @Autowired
     private TardisRepository tardisRepository;
 
-    @Autowired
     private HeroRepository heroRepository;
 
-    @Autowired
     private LightSaberRepository lightSaberRepository;
 
-    @Autowired
     private ItemRepository itemRepository;
 
-    @Autowired
     private VehicleRepository vehicleRepository;
 
-    @Autowired
     private TieFighterRepository tieFighterRepository;
 
-    @Autowired
     private CreatureRepository creatureRepository;
 
-    @Autowired
     private UrukaiRepository urukaiRepository;
 
-    @Autowired
     private OrcRepository orcRepository;
-
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
-        initJoinedTable();
         initMappedSuperClass();
         initSingleTable();
+        initJoinedTable();
         initTablePerClass();
-
     }
 
     private void initMappedSuperClass() {
 
         Villain villain = new Villain();
-        villain.setMoniker("Galactic Space Whiner");
+        villain.setMoniker("SpaceWhiner");
         villain.setMotto("But I was going into Tosche Station to pick up some power converters!");
         villain.setFirstName("Luke");
         villain.setLastName("Skywalker");
@@ -111,6 +99,7 @@ public class DataLoader implements ApplicationRunner {
         PowerRing powerRing = new PowerRing();
         powerRing.setRechargeable(true);
         powerRing.setWeakness("yellow");
+        powerRing.setColor("green");
 
         itemRepository.save(powerRing);
     }
@@ -146,7 +135,6 @@ public class DataLoader implements ApplicationRunner {
         tieFighterRepository.save(interceptor) ;
 
         // ALSO NOTE THAT THE VEHICLE TABLE HAS 3 ENTRIES BUT TIE_FIGHTER ONLY HAS 2
-
         Tardis tardis = new Tardis();
         tardis.setColor("blue");
         tardis.setPoliceBox(true);
@@ -171,6 +159,7 @@ public class DataLoader implements ApplicationRunner {
 
         urukaiRepository.save(urukai);
 
+        // You can even extend Urukai and inherit from Creature
         Orc orc = new Orc();
         orc.setMaster("Sauron");
         orc.setHitPoints(5);

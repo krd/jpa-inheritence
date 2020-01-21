@@ -1,4 +1,4 @@
-package com.krd.jpa.inheritance.service.character;
+package com.krd.jpa.inheritance.service.mappedsuper;
 
 import com.krd.jpa.inheritance.model.mappedsuper.Villain;
 import com.krd.jpa.inheritance.repository.mappedsuper.VillainRepository;
@@ -16,7 +16,7 @@ public class VillainService {
 
     private VillainRepository villainRepository;
 
-    public Villain getVillainByMonikier(@NonNull final String moniker) {
+    public Villain getVillainByMoniker(@NonNull final String moniker) {
         Optional<Villain> found = villainRepository.findByMoniker(moniker);
         if(found.isPresent()) {
             return found.get();
@@ -31,5 +31,16 @@ public class VillainService {
         }
         return found;
     }
+
+    public Villain getById(Long id) {
+        Optional<Villain> found = villainRepository.findById(id);
+        return found.get();
+    }
+
+    public Villain addVillain(Villain villain) {
+        Villain saved = villainRepository.save(villain);
+        return saved;
+    }
+
 
 }

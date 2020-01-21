@@ -13,12 +13,11 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = false)
 public class LightSaber extends Item {
 
-    @Column
-    String color;
-
     @Column(name = "style")
     String style;
 
-    @Column(name = "damage")
+    @Column(name = "damage", columnDefinition = "", insertable = true, length = 32, nullable = true, precision = 0)
     private Integer damage;
+
+
 }

@@ -19,4 +19,7 @@ public class Item {
 
   @Column
   private String size;
+
+  @Column
+  private String color;
 }

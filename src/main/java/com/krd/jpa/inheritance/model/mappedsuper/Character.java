@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"FIRST_NAME", "LAST_NAME"})})
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
@@ -16,12 +17,15 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
+    @Column(name = "LAST_NAME")
     private String lastName;
 
+    @Column
     private Integer hitPoints;
 
 }

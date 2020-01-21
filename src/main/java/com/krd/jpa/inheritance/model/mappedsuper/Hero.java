@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-//@Table(schema = "mappedsuper")
 @EqualsAndHashCode(callSuper = false)
 public class Hero extends Character {
 
@@ -15,7 +14,7 @@ public class Hero extends Character {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+  private Long id;
 
   @Column
   String catchPhrase;
