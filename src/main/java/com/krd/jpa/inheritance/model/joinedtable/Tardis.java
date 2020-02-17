@@ -7,16 +7,10 @@ import javax.persistence.*;
 
 @Data
 @Entity
-//@PrimaryKeyJoinColumn(name ="tardisId")
 @EqualsAndHashCode
-public class Tardis {
+public class Tardis extends Vehicle {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
     @Column
     private Boolean policeBox;

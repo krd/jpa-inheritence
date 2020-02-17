@@ -7,23 +7,17 @@ import com.krd.jpa.inheritance.model.mappedsuper.Hero;
 import com.krd.jpa.inheritance.model.mappedsuper.Villain;
 import com.krd.jpa.inheritance.model.singletable.LightSaber;
 import com.krd.jpa.inheritance.model.singletable.PowerRing;
-import com.krd.jpa.inheritance.model.tableperclass.Creature;
-import com.krd.jpa.inheritance.model.tableperclass.Orc;
-import com.krd.jpa.inheritance.model.tableperclass.Urukai;
+import com.krd.jpa.inheritance.model.tableperclass.Alien;
+import com.krd.jpa.inheritance.model.tableperclass.Engineer;
+import com.krd.jpa.inheritance.model.tableperclass.Xenomorph;
 import com.krd.jpa.inheritance.repository.joinedtable.TardisRepository;
 import com.krd.jpa.inheritance.repository.joinedtable.TieFighterRepository;
 import com.krd.jpa.inheritance.repository.joinedtable.VehicleRepository;
-import com.krd.jpa.inheritance.repository.mappedsuper.CharacterRepository;
 import com.krd.jpa.inheritance.repository.mappedsuper.HeroRepository;
 import com.krd.jpa.inheritance.repository.mappedsuper.VillainRepository;
 import com.krd.jpa.inheritance.repository.singletable.ItemRepository;
-import com.krd.jpa.inheritance.repository.singletable.LightSaberRepository;
-import com.krd.jpa.inheritance.repository.tableperclass.CreatureRepository;
-import com.krd.jpa.inheritance.repository.tableperclass.OrcRepository;
-import com.krd.jpa.inheritance.repository.tableperclass.UrukaiRepository;
+import com.krd.jpa.inheritance.repository.tableperclass.AlienRepository;
 import lombok.AllArgsConstructor;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -38,19 +32,13 @@ public class DataLoader implements ApplicationRunner {
 
     private HeroRepository heroRepository;
 
-    private LightSaberRepository lightSaberRepository;
-
     private ItemRepository itemRepository;
 
     private VehicleRepository vehicleRepository;
 
     private TieFighterRepository tieFighterRepository;
 
-    private CreatureRepository creatureRepository;
-
-    private UrukaiRepository urukaiRepository;
-
-    private OrcRepository orcRepository;
+    private AlienRepository alienRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -94,7 +82,7 @@ public class DataLoader implements ApplicationRunner {
         lightSaber.setDamage(150);
         lightSaber.setStyle("double-bladed");
 
-        lightSaberRepository.save(lightSaber);
+        itemRepository.save(lightSaber);
 
         PowerRing powerRing = new PowerRing();
         powerRing.setRechargeable(true);
@@ -146,27 +134,33 @@ public class DataLoader implements ApplicationRunner {
         anotherTardis.setPoliceBox(false);
 
         // NOTE THAT I CAN'T USE VEHICLE REPO HERE BECAUSE I DIDN'T EXTEND IT
-//        vehicleRepository.save(anotherTardis);
+        // vehicleRepository.save(anotherTardis);
     }
 
     private void initTablePerClass() {
 
-        Urukai urukai = new Urukai();
-        urukai.setMaster("Saruman");
-        urukai.setName("Gorbag");
-        urukai.setHitPoints(50);
-        urukai.setAlignment("CHAOTIC EVIL");
+        Alien alien = new Alien();
+        alien.setName("Kodos and Kang");
+        alien.setSpaceShip(true);
+        alien.setQuadruped(false);
+        alien.setEyes(1);
+        alien.setSpaceShip(true);
+        alienRepository.save(alien);
 
-        urukaiRepository.save(urukai);
+        Engineer engineer = new Engineer();
+        engineer.setHair(false);
+        engineer.setQuadruped(false);
+        engineer.setName("The Engineers");
+        engineer.setEyes(2);
+        engineer.setSpaceShip(true);
+        alienRepository.save(engineer);
 
-        // You can even extend Urukai and inherit from Creature
-        Orc orc = new Orc();
-        orc.setMaster("Sauron");
-        orc.setHitPoints(5);
-        orc.setAlignment("CHAOTIC EVIL");
-        orc.setName("Gothmog");
-
-        orcRepository.save(orc);
-
+        Xenomorph xenomorph = new Xenomorph();
+        xenomorph.setDefense("acid blood");
+        xenomorph.setOffense("extendo jaw and shitloads of teeth");
+        xenomorph.setQuadruped(true);
+        xenomorph.setSpaceShip(false);
+        xenomorph.setEyes(0);
+        alienRepository.save(xenomorph);
     }
 }

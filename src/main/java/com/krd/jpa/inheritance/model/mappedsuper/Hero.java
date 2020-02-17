@@ -7,10 +7,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@EqualsAndHashCode(callSuper = false)
+//@EqualsAndHashCode(callSuper = false)
 public class Hero extends Character {
-
-  private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

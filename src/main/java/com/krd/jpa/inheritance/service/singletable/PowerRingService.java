@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +19,9 @@ public class PowerRingService {
         return ((List<PowerRing>) powerRingRepository.findAll());
     }
 
-//    public PowerRing getByColor() {}
+    public PowerRing getByWeakness(String weakness) {
+        Optional<PowerRing> found = powerRingRepository.findByWeakness(weakness);
+        return (found.isPresent())? found.get() : null;
+    }
 
 }

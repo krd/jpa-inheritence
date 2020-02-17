@@ -6,23 +6,37 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * MappedSuperClass inheritance strategy example.
+ *
+ * Implementation:
+ *  - Use of @MappedSuperclass required for this strategry
+ *
+ * Effects:
+ *  - This class will NOT have a table created for it in DB
+ *  - Child classes will have a table created for them
+ *  - Child classes will have all fields defined by parent present in EACH table (data duplication!!)
+ *  - Must set parent fields for each instance
+ *
+ * Drawbacks:
+ *  - Ancestors have no associations to each other
+ *
+ */
+
 @Data
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"FIRST_NAME", "LAST_NAME"})})
+@MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
 public class Character {
-
-    // BOOHOO... I WON'T HAVE MY OWN TABLE :(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "FIRST_NAME")
+    @Column
     private String firstName;
 
-    @Column(name = "LAST_NAME")
+    @Column
     private String lastName;
 
     @Column

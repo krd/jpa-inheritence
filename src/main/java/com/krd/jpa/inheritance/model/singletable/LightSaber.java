@@ -2,22 +2,20 @@ package com.krd.jpa.inheritance.model.singletable;
 
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Data
 @Entity
-//@Table(name = "Item", schema = "singletable")
 @DiscriminatorValue("LIGHTSABER")
-@EqualsAndHashCode(callSuper = false)
 public class LightSaber extends Item {
 
-    @Column(name = "style")
+    @Column
     String style;
 
-    @Column(name = "damage", columnDefinition = "", insertable = true, length = 32, nullable = true, precision = 0)
+    @Column
     private Integer damage;
-
 
 }
